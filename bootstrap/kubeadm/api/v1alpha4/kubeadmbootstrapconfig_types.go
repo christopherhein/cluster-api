@@ -29,6 +29,9 @@ type Format string
 const (
 	// CloudConfig make the bootstrap data to be of cloud-config format
 	CloudConfig Format = "cloud-config"
+
+	// PodConfig makes the bootstrap data to be in yaml manifest format
+	PodConfig Format = "pod-config"
 )
 
 // KubeadmConfigSpec defines the desired state of KubeadmConfig.
@@ -76,6 +79,7 @@ type KubeadmConfigSpec struct {
 
 	// Format specifies the output format of the bootstrap data
 	// +optional
+	// +kubebuilder:default=cloud-config
 	Format Format `json:"format,omitempty"`
 
 	// Verbosity is the number for the kubeadm log level verbosity.
